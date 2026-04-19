@@ -463,57 +463,73 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.95rem;
 }
 
-/* Brands Section */
-.brands-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+/* Infinite Brand Slider */
+.brand-slider {
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    background: transparent;
+    padding: 20px 0;
 }
 
-.brand-category {
-    background: var(--bg-secondary);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 25px;
-    text-align: center;
-    transition: var(--transition);
+.brand-slider::before,
+.brand-slider::after {
+    background: linear-gradient(to right, var(--bg-main) 0%, rgba(10,14,23,0) 100%);
+    content: "";
+    height: 100px;
+    position: absolute;
+    width: 150px;
+    z-index: 2;
+    top: 0;
 }
 
-.brand-category:hover {
-    border-color: var(--primary);
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
+.brand-slider::before {
+    left: 0;
 }
 
-.brand-category h4 {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.brand-slider::after {
+    right: 0;
+    transform: rotateZ(180deg);
 }
 
-.brand-tags {
+.brand-slide-track {
+    animation: scroll 35s linear infinite;
     display: flex;
-    flex-wrap: wrap;
+    width: calc(200px * 20); /* 10 slides * 2 */
+}
+
+.brand-slide-track:hover {
+    animation-play-state: paused;
+}
+
+.brand-slide {
+    height: 60px;
+    width: 200px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
+    padding: 0 20px;
 }
 
-.brand-tag {
-    background: rgba(67, 97, 238, 0.1);
-    color: var(--text-main);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    border: 1px solid rgba(67, 97, 238, 0.2);
+.brand-slide img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.6);
     transition: var(--transition);
+    border-radius: 8px;
 }
 
-.brand-tag:hover {
-    background: var(--primary);
-    color: #fff;
+.brand-slide img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-200px * 10)); }
 }
 
 /* Why Us Section */
