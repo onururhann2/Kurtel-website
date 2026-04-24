@@ -563,7 +563,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Reference Slider */
 .ref-slider {
-    height: 120px;
+    height: 160px;
     margin: auto;
     overflow: hidden;
     position: relative;
@@ -574,7 +574,7 @@ h1, h2, h3, h4, h5, h6 {
 .ref-slider::after {
     background: linear-gradient(to right, var(--bg-secondary) 0%, rgba(5,8,15,0) 100%);
     content: "";
-    height: 120px;
+    height: 160px;
     position: absolute;
     width: 150px;
     z-index: 2;
@@ -585,16 +585,16 @@ h1, h2, h3, h4, h5, h6 {
 .ref-slider::after { right: 0; transform: rotateZ(180deg); }
 
 .ref-slide-track {
-    animation: scroll-refs 40s linear infinite;
+    animation: scroll-refs 45s linear infinite;
     display: flex;
-    width: calc(250px * 20); /* 10 references * 2 */
+    width: calc(320px * 20); /* 10 references * 2 */
 }
 
 .ref-slide-track:hover { animation-play-state: paused; }
 
 .ref-slide {
-    height: 120px;
-    width: 250px;
+    height: 160px;
+    width: 320px;
     padding: 0 15px;
     display: flex;
     align-items: center;
@@ -605,7 +605,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #ffffff;
     border-radius: 12px;
     width: 100%;
-    height: 90px;
+    height: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -627,7 +627,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes scroll-refs {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-250px * 10)); }
+    100% { transform: translateX(calc(-320px * 10)); }
 }
 
 /* Why Us Section */
