@@ -50,38 +50,46 @@
     }
     </script>
     
-    <!-- Google Fonts -->
+    <!-- Theme Color (Best Practices) -->
+    <meta name="theme-color" content="#0a0e17">
+
+    <!-- Google Fonts - display=swap for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- AOS Animation -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+    <!-- FontAwesome - defer to avoid render blocking -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- AOS Animation - defer -->
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></noscript>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#home" class="skip-link" style="position:absolute;left:-9999px;top:0;background:#4361ee;color:#fff;padding:8px 16px;z-index:9999;border-radius:0 0 8px 0;font-weight:600;" onfocus="this.style.left='0'" onblur="this.style.left='-9999px'">İçeriğe Geç</a>
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="logo">
                 <img src="images/logo.png" alt="Kurtel İletişim Cihazları Ankara Güvenlik Sistemleri Logosu" class="logo-img" onerror="this.src=''; this.alt='KURTEL'; this.className='logo-text';">
             </a>
-            <ul class="nav-links">
-                <li><a href="#home">Ana Sayfa</a></li>
-                <li><a href="#about">Hakkımızda</a></li>
-                <li><a href="#services">Hizmetlerimiz</a></li>
-                <li><a href="#why-us">Neden Biz?</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="#contact" class="btn btn-primary">İletişime Geç</a></li>
+            <ul class="nav-links" id="nav-links" role="menubar">
+                <li role="none"><a href="#home" role="menuitem">Ana Sayfa</a></li>
+                <li role="none"><a href="#about" role="menuitem">Hakkımızda</a></li>
+                <li role="none"><a href="#services" role="menuitem">Hizmetlerimiz</a></li>
+                <li role="none"><a href="#why-us" role="menuitem">Neden Biz?</a></li>
+                <li role="none"><a href="blog.html" role="menuitem">Blog</a></li>
+                <li role="none"><a href="#contact" class="btn btn-primary" role="menuitem">İletişime Geç</a></li>
             </ul>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
+            <button class="hamburger" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="nav-links">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </nav>
 
@@ -438,28 +446,32 @@
                         <input type="hidden" name="_next" value="https://kurtel.net.tr/">
                         
                         <div class="form-group">
-                            <input type="text" name="name" id="name" placeholder="Adınız Soyadınız" required>
+                            <label for="name" class="sr-only">Adınız Soyadınız</label>
+                            <input type="text" name="name" id="name" placeholder="Adınız Soyadınız" required aria-label="Adınız Soyadınız" autocomplete="name">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" id="email" placeholder="E-posta Adresiniz" required>
+                            <label for="email" class="sr-only">E-posta Adresiniz</label>
+                            <input type="email" name="email" id="email" placeholder="E-posta Adresiniz" required aria-label="E-posta Adresiniz" autocomplete="email">
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="phone" id="phone" placeholder="Telefon Numaranız">
+                            <label for="phone" class="sr-only">Telefon Numaranız</label>
+                            <input type="tel" name="phone" id="phone" placeholder="Telefon Numaranız" aria-label="Telefon Numaranız" autocomplete="tel">
                         </div>
                         <div class="form-group">
-                            <select name="service" id="service">
+                            <label for="service" class="sr-only">İlgilendiğiniz Hizmet</label>
+                            <select name="service" id="service" aria-label="İlgilendiğiniz hizmeti seçin">
                                 <option value="" disabled selected>İlgilendiğiniz Hizmet</option>
                                 <option value="Yangın Alarm">Yangın Alarm ve Söndürme Sistemleri</option>
                                 <option value="Güvenlik Kamera">Kamera ve Güvenlik Sistemleri</option>
                                 <option value="Kapı Konuşma">Kapı Konuşma Sistemleri</option>
                                 <option value="Seslendirme">Seslendirme Sistemleri</option>
                                 <option value="Santral/Telefon">Santral ve Telefon Çözümleri</option>
-                                <option value="Web/QR">Web Sitesi ve QR Kod Hizmetleri</option>
                                 <option value="Diğer">Diğer</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" id="message" rows="5" placeholder="Mesajınız" required></textarea>
+                            <label for="message" class="sr-only">Mesajınız</label>
+                            <textarea name="message" id="message" rows="5" placeholder="Mesajınız" required aria-label="Mesajınız"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Mesaj Gönder</button>
                     </form>
@@ -467,7 +479,7 @@
             </div>
 
             <div class="map-container" data-aos="fade-up" style="margin-top: 50px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2); height: 400px; width: 100%;">
-                <iframe width="100%" height="100%" src="https://maps.google.com/maps?q=Kale%20Mahallesi%20%C5%9Ean%20Sokak%2012/7%20Alt%C4%B1nda%C4%9F/Ankara&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="filter: invert(90%) hue-rotate(180deg) contrast(85%); border: 0;"></iframe>
+                <iframe width="100%" height="100%" title="Kurtel İletişim Cihazları Konumu - Kale Mah. Şan Sok. 12/7 Altındağ Ankara" src="https://maps.google.com/maps?q=Kale%20Mahallesi%20%C5%9Ean%20Sokak%2012/7%20Alt%C4%B1nda%C4%9F/Ankara&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" loading="lazy" style="filter: invert(90%) hue-rotate(180deg) contrast(85%); border: 0;"></iframe>
             </div>
         </div>
     </section>
@@ -505,16 +517,13 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/905548704979" class="whatsapp-float" target="_blank" title="WhatsApp'tan bize ulaşın">
-        <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/905548704979" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile bize ulaşın">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
     </a>
 
-    <!-- Scripts -->
-    <!-- Particles.js for Hero Background -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <!-- AOS Animation -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Custom JS -->
-    <script src="js/main.js"></script>
+    <!-- Scripts - defer for performance -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
