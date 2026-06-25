@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
-
+Disallow: /usta-garaji/
 Sitemap: https://kurtel.net.tr/sitemap.xml
+Crawl-delay: 1
