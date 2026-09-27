@@ -4,6 +4,7 @@
 User-agent: *
 Allow: /
 Disallow: /usta-garaji/
+Disallow: /otogargara/
 Crawl-delay: 1
 
 # AI Crawlers — Erişime İzin Ver (GEO optimizasyonu için)
