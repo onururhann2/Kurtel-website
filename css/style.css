@@ -486,7 +486,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.2; margin-bottom: 1rem
 
 @keyframes scroll-refs {
   0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-320px * 10)); }
+  100% { transform: translateX(calc(-320px * 11)); }
 }
 
 /* ─── Why Us ─── */
