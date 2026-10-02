@@ -36,9 +36,11 @@
         <div class="container">
             <a href="index.html" class="logo"><img src="images/logo.png" alt="Kurtel Logo" class="logo-img"></a>
             <ul class="nav-links">
-                <li><a href="index.html#home">Ana Sayfa</a></li>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="index.html#services">Hizmetlerimiz</a></li>
+                <li><a href="hakkimizda.html">Hakkımızda</a></li>
                 <li><a href="blog.html" class="active" style="color: var(--primary);">Blog</a></li>
-                <li><a href="index.html#contact" class="btn btn-primary">İletişime Geç</a></li>
+                <li><a href="iletisim.html" class="btn btn-primary">İletişim</a></li>
             </ul>
             <div class="hamburger"><i class="fas fa-bars"></i></div>
         </div>
@@ -102,7 +104,15 @@
                 <p><i class="fas fa-envelope"></i> info@kurtel.net.tr</p>
             </div>
         </div>
-        <div class="footer-bottom"><p>&copy; <span id="year"></span> Kurtel İletişim Cihazları.</p></div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Kurtel İletişim Cihazları. Tüm hakları saklıdır.</p>
+            <p style="margin-top:8px; font-size:0.85rem;">
+                <a href="gizlilik-politikasi.html" style="color:var(--text-muted); margin:0 10px;">Gizlilik Politikası</a>
+                <a href="kvkk.html" style="color:var(--text-muted); margin:0 10px;">KVKK</a>
+                <a href="hakkimizda.html" style="color:var(--text-muted); margin:0 10px;">Hakkımızda</a>
+                <a href="iletisim.html" style="color:var(--text-muted); margin:0 10px;">İletişim</a>
+            </p>
+        </div>
     </footer>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({duration:800,once:true}); document.getElementById('year').textContent = new Date().getFullYear();</script>
