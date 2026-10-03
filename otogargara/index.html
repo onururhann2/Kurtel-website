@@ -6,6 +6,12 @@
     <title>Otogargara</title><meta name="robots" content="noindex, nofollow">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+      /* Tam ekran tarayıcının kendi tam ekranıyla (kapsayıcı): tuval hep kapsayıcıyı doldurur, Unity bunu sıradan bir
+         yeniden boyutlandırma görür; imleç koordinatları ekranla uyumlu kalır (Unity SetFullscreen'de kaydırma kilitleniyordu). */
+      #unity-fullscreen-container:fullscreen { width: 100vw !important; height: 100vh !important; background: #231F20; }
+      #unity-fullscreen-container:-webkit-full-screen { width: 100vw !important; height: 100vh !important; background: #231F20; }
+    </style>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -134,8 +140,20 @@
             loadingContainer.style.display = "none";
           }
         }).then((unityInstance) => {
+                // Unity'nin SetFullscreen'i yerine tarayıcının tam ekranı: kapsayıcı tam ekrana geçer, tuval onu doldurur.
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  unityInstance.SetFullscreen(1);
+                  const doc = document;
+                  const active = doc.fullscreenElement || doc.webkitFullscreenElement;
+                  if (active) {
+                    (doc.exitFullscreen || doc.webkitExitFullscreen).call(doc);
+                    return;
+                  }
+                  const request = fullscreenContainer.requestFullscreen || fullscreenContainer.webkitRequestFullscreen;
+                  if (request) {
+                    Promise.resolve(request.call(fullscreenContainer)).then(() => canvas.focus()).catch(() => {});
+                  } else {
+                    unityInstance.SetFullscreen(1);
+                  }
                 };
 
               }).catch((message) => {
