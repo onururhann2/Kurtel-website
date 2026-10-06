@@ -242,11 +242,11 @@
     <!-- Theme Color -->
     <meta name="theme-color" content="#ffffff">
 
-    <!-- Google Fonts — Jost (Futura-PT substitute) -->
+    <!-- Google Fonts — Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 
     <!-- FontAwesome -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -289,20 +289,61 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-bg-stars" aria-hidden="true"></div>
+        <div class="hero-bg-grid" aria-hidden="true"></div>
         <div class="container hero-content">
             <div class="hero-text" data-aos="fade-up" data-aos-duration="1000">
-                <span class="badge">40 Yıllık Güven ve Tecrübe</span>
+                <span class="badge"><span class="badge-dot" aria-hidden="true"></span>1984'ten beri · 40 Yıllık Güven ve Tecrübe</span>
                 <h1>Ankara'da <span>Güvenlik Kamera ve Yangın Alarm Sistemleri</span> Kurulumu</h1>
                 <p>Ankara ve çevresinde yangın alarm, güvenlik kamera, kapı konuşma ve santral sistemlerinde uzman çözümler sunuyoruz.</p>
                 <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary btn-large">Hizmetlerimizi İnceleyin</a>
-                    <a href="#contact" class="btn btn-outline btn-large">Teklif Alın</a>
+                    <a href="#contact" class="btn btn-primary btn-large">Ücretsiz Keşif ve Teklif Alın <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="#services" class="btn btn-outline btn-large">Hizmetlerimizi İnceleyin</a>
                 </div>
+                <ul class="hero-stats">
+                    <li><strong>40+</strong><span>Yıllık tecrübe</span></li>
+                    <li><strong>6</strong><span>Uzmanlık alanı</span></li>
+                    <li><strong>11+</strong><span>Çözüm ortağı marka</span></li>
+                    <li><strong>Ücretsiz</strong><span>Keşif ve teklif</span></li>
+                </ul>
             </div>
         </div>
         <div class="scroll-indicator">
-            <a href="#about"><i class="fas fa-chevron-down"></i></a>
+            <a href="#references" aria-label="Aşağı kaydır"><i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="references" class="references section-padding">
+        <div class="container">
+            <div class="section-heading section-heading--split" data-aos="fade-up">
+                <div>
+                    <h2 class="section-title">Referanslarımız</h2>
+                    <div class="heading-line"></div>
+                    <p class="section-subtitle">Türkiye'nin önde gelen kurum ve kuruluşlarının tercihi</p>
+                </div>
+                <div class="carousel-controls">
+                    <button type="button" class="carousel-btn" data-carousel-prev aria-controls="ref-track" aria-label="Önceki referanslar"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <button type="button" class="carousel-btn" data-carousel-toggle aria-controls="ref-track" aria-label="Otomatik kaydırmayı durdur"><i class="fas fa-pause" aria-hidden="true"></i></button>
+                    <button type="button" class="carousel-btn" data-carousel-next aria-controls="ref-track" aria-label="Sonraki referanslar"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
+
+            <div class="ref-carousel" data-carousel role="region" aria-roledescription="carousel" aria-label="Referans kurumlar" data-aos="fade-up" data-aos-delay="100">
+                <ul class="ref-track" id="ref-track" tabindex="0" aria-label="Referans logoları, ok tuşlarıyla kaydırılabilir">
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/web/toki.webp" alt="TOKİ logosu" width="219" height="320" loading="lazy"></div><span class="ref-name">TOKİ</span></li>
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/TÜBİTAK.svg" alt="TÜBİTAK logosu" loading="lazy"></div><span class="ref-name">TÜBİTAK</span></li>
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/TMO_logo.svg" alt="TMO logosu" loading="lazy"></div><span class="ref-name">TMO</span></li>
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/web/nesibe-aydin.webp" alt="Nesibe Aydın Okulları logosu" width="640" height="227" loading="lazy"></div><span class="ref-name">Nesibe Aydın Okulları</span></li>
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/web/bilfen.webp" alt="Bilfen logosu" width="487" height="179" loading="lazy"></div><span class="ref-name">Bilfen</span></li>
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/web/dusunur.webp" alt="Düşünür Koleji logosu" width="512" height="320" loading="lazy"></div><span class="ref-name">Düşünür Koleji</span></li>
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/web/odtululer.webp" alt="ODTÜ'lüler Eğitim Kurumları logosu" width="320" height="320" loading="lazy"></div><span class="ref-name">ODTÜ'lüler Eğitim Kurumları</span></li>
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/web/altincati.webp" alt="Altınçatı Huzurevi logosu" width="640" height="167" loading="lazy"></div><span class="ref-name">Altınçatı Huzurevi</span></li>
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/web/gonul-yilmaz.webp" class="is-small" alt="Gönül Yılmaz logosu" width="100" height="75" loading="lazy"></div><span class="ref-name">Gönül Yılmaz</span></li>
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/web/turkseven.webp" class="is-small" alt="Türkseven logosu" width="148" height="138" loading="lazy"></div><span class="ref-name">Türkseven</span></li>
+                    <li class="ref-card"><div class="ref-logo"><img src="images/references/web/tapeten.webp" class="is-small" alt="Tapeten logosu" width="200" height="67" loading="lazy"></div><span class="ref-name">Tapeten</span></li>
+                </ul>
+                <div class="carousel-progress" aria-hidden="true"><span></span></div>
+            </div>
         </div>
     </section>
 
@@ -434,47 +475,6 @@
                         <li><i class="fas fa-check"></i> Restoran ve Kafeler İçin QR Menü</li>
                         <li><i class="fas fa-check"></i> Özel Dijital Kartvizit Sistemleri</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- References Section -->
-    <section id="references" class="references section-padding bg-dark">
-        <div class="container">
-            <div class="section-heading text-center" data-aos="fade-up">
-                <h2 class="section-title">Referanslarımız</h2>
-                <div class="heading-line mx-auto"></div>
-                <p class="section-subtitle">Türkiye'nin önde gelen kurum ve kuruluşlarının tercihi</p>
-            </div>
-            
-            <div class="ref-slider" data-aos="fade-up" data-aos-delay="100">
-                <div class="ref-slide-track">
-                    <!-- Original 10 Logos -->
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/TOKİ.jpg" alt="TOKİ"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/TÜBİTAK.svg" alt="TÜBİTAK"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/altınçatı.jpg" alt="Altınçatı"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/bilfen.png" alt="Bilfen"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/düşünür.jpg" alt="Düşünür Koleji"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/gönül yılmaz.png" alt="Gönül Yılmaz"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/nesibe aydın.jpg" alt="Nesibe Aydın"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/odtülüler.jpg" alt="ODTÜ'lüler"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/tapeten.jpg" alt="Tapeten"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/türkseven.webp" alt="Türkseven"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/TMO_logo.svg" alt="TMO" loading="lazy"></div></div>
-                    
-                    <!-- Duplicated 10 Logos -->
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/TOKİ.jpg" alt="TOKİ"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/TÜBİTAK.svg" alt="TÜBİTAK"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/altınçatı.jpg" alt="Altınçatı"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/bilfen.png" alt="Bilfen"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/düşünür.jpg" alt="Düşünür Koleji"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/gönül yılmaz.png" alt="Gönül Yılmaz"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/nesibe aydın.jpg" alt="Nesibe Aydın"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/odtülüler.jpg" alt="ODTÜ'lüler"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/tapeten.jpg" alt="Tapeten"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/türkseven.webp" alt="Türkseven"></div></div>
-                    <div class="ref-slide"><div class="ref-box"><img src="images/references/TMO_logo.svg" alt="TMO" loading="lazy"></div></div>
                 </div>
             </div>
         </div>
@@ -674,8 +674,8 @@
                 </div>
             </div>
 
-            <div class="map-container" data-aos="fade-up" style="margin-top: 50px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2); height: 400px; width: 100%;">
-                <iframe width="100%" height="100%" title="Kurtel İletişim Cihazları Konumu - Kale Mah. Şan Sok. 12/7 Altındağ Ankara" src="https://maps.google.com/maps?q=Kale%20Mahallesi%20%C5%9Ean%20Sokak%2012/7%20Alt%C4%B1nda%C4%9F/Ankara&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" loading="lazy" style="filter: invert(90%) hue-rotate(180deg) contrast(85%); border: 0;"></iframe>
+            <div class="map-container" data-aos="fade-up" style="margin-top: 50px; border-radius: 12px; overflow: hidden; height: 400px; width: 100%;">
+                <iframe width="100%" height="100%" title="Kurtel İletişim Cihazları Konumu - Kale Mah. Şan Sok. 12/7 Altındağ Ankara" src="https://maps.google.com/maps?q=Kale%20Mahallesi%20%C5%9Ean%20Sokak%2012/7%20Alt%C4%B1nda%C4%9F/Ankara&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" loading="lazy" style="border: 0;"></iframe>
             </div>
         </div>
     </section>

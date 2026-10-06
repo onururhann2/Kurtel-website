@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const animateCounters = () => {
         counters.forEach(counter => {
+            if (counter.dataset.done) return;
             const updateCount = () => {
                 const target = +counter.getAttribute('data-target');
                 const count = +counter.innerText;
@@ -75,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = counter.getBoundingClientRect();
             if(rect.top < window.innerHeight && rect.bottom >= 0) {
                  updateCount();
-                 counter.classList.remove('counter'); // Prevent running again
+                 counter.dataset.done = 'true'; // Prevent running again (keep the class for styling)
             }
         });
     };
@@ -84,6 +85,95 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initial check for counter
     animateCounters();
+
+    // Reference Carousel: auto-advance, prev/next, pause, keyboard, reduced motion
+    document.querySelectorAll('[data-carousel]').forEach(carousel => {
+        const track = carousel.querySelector('.ref-track');
+        const section = carousel.closest('section');
+        const prevBtn = section.querySelector('[data-carousel-prev]');
+        const nextBtn = section.querySelector('[data-carousel-next]');
+        const toggleBtn = section.querySelector('[data-carousel-toggle]');
+        const progress = carousel.querySelector('.carousel-progress span');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (!track) return;
+
+        let userPaused = reduceMotion.matches;
+        let interactionPaused = false;
+        let inView = false;
+        let resumeTimer;
+
+        const stepSize = () => {
+            const card = track.querySelector('.ref-card');
+            const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+            return card ? card.getBoundingClientRect().width + gap : track.clientWidth;
+        };
+
+        const go = (dir) => {
+            const max = track.scrollWidth - track.clientWidth;
+            const behavior = reduceMotion.matches ? 'auto' : 'smooth';
+            if (dir > 0 && track.scrollLeft >= max - 4) {
+                track.scrollTo({ left: 0, behavior });
+            } else if (dir < 0 && track.scrollLeft <= 4) {
+                track.scrollTo({ left: max, behavior });
+            } else {
+                track.scrollBy({ left: dir * stepSize(), behavior });
+            }
+        };
+
+        const updateProgress = () => {
+            if (!progress) return;
+            const ratio = (track.scrollLeft + track.clientWidth) / track.scrollWidth;
+            progress.style.width = `${Math.min(100, ratio * 100)}%`;
+        };
+
+        const updateToggle = () => {
+            if (!toggleBtn) return;
+            const icon = toggleBtn.querySelector('i');
+            icon.classList.toggle('fa-pause', !userPaused);
+            icon.classList.toggle('fa-play', userPaused);
+            toggleBtn.setAttribute('aria-label', userPaused ? 'Otomatik kaydırmayı başlat' : 'Otomatik kaydırmayı durdur');
+        };
+
+        // Pause briefly after manual interaction, then resume
+        const pauseForInteraction = () => {
+            interactionPaused = true;
+            clearTimeout(resumeTimer);
+            resumeTimer = setTimeout(() => { interactionPaused = false; }, 6000);
+        };
+
+        setInterval(() => {
+            if (!userPaused && !interactionPaused && inView && !document.hidden) go(1);
+        }, 3500);
+
+        prevBtn && prevBtn.addEventListener('click', () => { go(-1); pauseForInteraction(); });
+        nextBtn && nextBtn.addEventListener('click', () => { go(1); pauseForInteraction(); });
+        toggleBtn && toggleBtn.addEventListener('click', () => { userPaused = !userPaused; updateToggle(); });
+
+        carousel.addEventListener('mouseenter', () => { interactionPaused = true; clearTimeout(resumeTimer); });
+        carousel.addEventListener('mouseleave', () => { interactionPaused = false; });
+        carousel.addEventListener('focusin', () => { interactionPaused = true; clearTimeout(resumeTimer); });
+        carousel.addEventListener('focusout', () => { interactionPaused = false; });
+        track.addEventListener('touchstart', pauseForInteraction, { passive: true });
+
+        track.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+        });
+
+        track.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('resize', updateProgress);
+
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(entries => {
+                inView = entries[0].isIntersecting;
+            }, { threshold: 0.3 }).observe(carousel);
+        } else {
+            inView = true;
+        }
+
+        updateToggle();
+        updateProgress();
+    });
 
     // Particles.js Configuration for Hero Section
     if(typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
